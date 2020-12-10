@@ -1,0 +1,21 @@
+{
+  "scripts": {
+    "local": "cd sendmail && npm run local",
+    "dev": "cp sample.env.dev .env",
+    "prod": "cp sample.env.prod .env",
+    "post:run": "docker-compose -f d-c-postfix.yml up",
+    "post:stop": "docker-compose -f d-c-postfix.yml down",
+    "send:run": "docker-compose -f d-c-sendmail.yml up",
+    "send:stop": "docker-compose -f d-c-sendmail.yml down"
+  },
+  "scriptsComments": {
+    "local": "run a local dev service",
+    "dev": "set dev env",
+    "prod": "set prod env",
+    "post:run": "run client postfix server [-- -d]  or [-- -build]",
+    "post:stop": "stop postfix server",
+    "send:run": "run npuser sendmail api endpoint server [-- -d]  or [-- -build]",
+    "send:stop": "stop npuser sendmail",
+    "exec": "also see the exec.sh shell script"
+  }
+}

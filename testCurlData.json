@@ -1,0 +1,6 @@
+{
+  "toAddress":"some@address.com",
+  "subject":"Sample subject",
+  "htmlBody": "To do insert some html",
+  "textBody": "Sample email text body"
+}

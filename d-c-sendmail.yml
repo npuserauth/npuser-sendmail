@@ -1,0 +1,26 @@
+version: '3'
+services:
+  sendmail:
+    build:
+      context: ./sendmail
+      dockerfile: Dockerfile
+    environment:
+      - HOST_NAME=sendmail
+      - SERVER_PORT
+      - MAIL_HOST_TYPE
+      - MAIL_FROM
+    healthcheck:
+      test: curl -f http://sendmail:${SERVER_PORT} >/dev/null 2>&1
+      interval: 1m
+      timeout: 10s
+      retries: 3
+    ports:
+      - ${SERVER_PORT}:${SERVER_PORT}
+    networks:
+      - default
+      - npuser-network
+
+networks:
+  npuser-network:
+    external: true
+    name: npuser-network

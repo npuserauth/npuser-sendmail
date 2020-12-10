@@ -1,0 +1,17 @@
+version: '3'
+services:
+  postfix:
+    image: boky/postfix
+    expose:
+      - "587"
+    environment:
+      - DKIM_AUTOGENERATE=1
+      - ALLOWED_SENDER_DOMAINS
+    restart: always
+    volumes:
+      - "./dkimkeys:/etc/opendkim/keys"
+    healthcheck:
+      test: postfix status
+      interval: 1m
+      timeout: 10s
+      retries: 3

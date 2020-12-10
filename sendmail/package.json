@@ -1,0 +1,23 @@
+{
+  "name": "npuser-sendmail",
+  "version": "1.0.0",
+  "description": "A node http server with api end point that creates and sends an email to the local MTA.",
+  "scripts": {
+    "env:list": "grep 'process.env' -Rn src/*",
+    "start": "node -r dotenv/config src/srv.js",
+    "local": "nodemon -r dotenv/config src/srv.js"
+  },
+  "scriptsComments": {
+    "start": "The script that is run when this service is run inside a docker container. See the Dockerfile",
+    "local": "Run a local copy with the Ethereal service. Setup .env via copy of sample.dev.env"
+  },
+  "dependencies": {
+    "nodemailer": "^6.4.14",
+    "winston": "^3.3.3"
+  },
+  "devDependencies": {
+    "@types/node": "^14.14.10",
+    "dotenv": "^8.2.0",
+    "nodemon": "^2.0.6"
+  }
+}
